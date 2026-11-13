@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resumo Financeiro - Bazar ReUse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="container" id="paginaResumo"
+      style="display: none;">
+
+    <header>
+        <h1>Bazar ReUse</h1>
+        <p>UNESPAR - Resumo Financeiro</p>
+    </header>
+
+    <nav class="menu">
+        <a href="index.html">Vendas</a>
+        <a href="entrada.html">Entrada</a>
+        <a href="caixa.html">Caixa</a>
+        <a href="resumo.html">Resumo</a>
+    </nav>
+
+    <section>
+        <h2>Movimento diário</h2>
+
+        <label for="dataResumo">
+            Selecione a data:
+        </label>
+
+        <input type="date" id="dataResumo">
+
+        <button type="button"
+                class="finalizar"
+                onclick="carregarResumo()">
+            Consultar movimento
+        </button>
+
+        <p id="mensagemResumo" role="status"></p>
+    </section>
+
+    <section>
+        <h2>Recebimentos do dia</h2>
+
+        <div class="resumo">
+            <p>Total arrecadado</p>
+            <h1 id="arrecadacao">—</h1>
+        </div>
+
+        <div class="carrinho">
+            <div class="linha">
+                <span>Recebido por Pix:</span>
+                <strong id="totalPix">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Recebido em dinheiro:</span>
+                <strong id="totalDinheiro">—</strong>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Fechamento do caixa</h2>
+
+        <div class="carrinho">
+
+            <div class="linha">
+                <span>Saldo inicial:</span>
+                <strong id="saldoInicial">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Vendas em dinheiro:</span>
+                <strong id="dinheiroCaixa">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Despesas:</span>
+                <strong id="despesas">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Retiradas:</span>
+                <strong id="retiradas">—</strong>
+            </div>
+
+
+			<div class="total-final">
+			    <span>Saldo esperado no caixa físico:</span>
+			    <strong id="saldoFinal">—</strong>
+			</div>
+
+			<div class="linha">
+			    <span>Pix recebido no dia:</span>
+			    <strong id="pixFechamento">—</strong>
+			</div>
+
+			<div class="total-final">
+			    <span>Total financeiro combinado:</span>
+			    <strong id="totalFinanceiro">—</strong>
+			</div>
+
+
+        </div>
+
+        <p class="observacao">
+            Os recebimentos por Pix não entram
+            no saldo de dinheiro físico.
+        </p>
+
+        <p class="observacao">
+            O saldo esperado considera somente
+            as movimentações da data selecionada.
+        </p>
+    </section>
+
+    <section>
+        <h2>Movimentação de peças</h2>
+
+        <div class="carrinho">
+
+            <div class="linha">
+                <span>Peças vendidas com pagamento:</span>
+                <strong id="pecasVendidas">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Peças retiradas com vouchers:</span>
+                <strong id="pecasVoucher">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Peças retiradas no total:</span>
+                <strong id="pecasRetiradas">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Vendas registradas:</span>
+                <strong id="quantidadeVendas">—</strong>
+            </div>
+
+            <div class="linha">
+                <span>Estoque disponível agora:</span>
+                <strong id="pecasEstoque">—</strong>
+            </div>
+
+        </div>
+
+        <p class="observacao">
+            O estoque apresentado é o estoque atual,
+            não o estoque histórico da data consultada.
+        </p>
+    </section>
+
+    <footer>
+        <p>Bazar ReUse - UNESPAR</p>
+    </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="conexao.js"></script>
+<script src="resumo.js"></script>
+
+</body>
+</html>

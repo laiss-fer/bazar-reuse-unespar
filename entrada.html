@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada de Peças - Bazar ReUse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container" id="paginaEntrada" style="display:none;">
+
+        <header>
+            <h1>Bazar ReUse</h1>
+            <p>UNESPAR - Entrada de Peças</p>
+        </header>
+		<nav class="menu">
+		    <a href="index.html">Vendas</a>
+		    <a href="entrada.html">Entrada</a>
+		    <a href="caixa.html">Caixa</a>
+		    <a href="resumo.html">Resumo</a>
+		</nav>
+        <section>
+            <h2>Registrar entrada</h2>
+            <p>Informe a quantidade de peças recebidas.</p>
+
+            <form id="formEntrada">
+                <label for="entrada5">Peças de R$ 5,00</label>
+                <input type="number" id="entrada5"
+                       min="0" step="1" value="0" required>
+
+                <label for="entrada10">Peças de R$ 10,00</label>
+                <input type="number" id="entrada10"
+                       min="0" step="1" value="0" required>
+
+                <button type="submit" class="finalizar"
+                        id="botaoEntrada">
+                    Registrar entrada
+                </button>
+            </form>
+
+            <p id="mensagemEntrada" role="status"></p>
+        </section>
+
+        <section class="carrinho">
+            <h2>Estoque disponível</h2>
+            <div class="linha">
+                <span>Peças de R$ 5,00:</span>
+                <strong id="estoque5">—</strong>
+            </div>
+            <div class="linha">
+                <span>Peças de R$ 10,00:</span>
+                <strong id="estoque10">—</strong>
+            </div>
+        </section>
+
+        <section>
+            <a href="index.html">Voltar para vendas</a>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="conexao.js"></script>
+    <script src="entrada.js"></script>
+</body>
+</html>

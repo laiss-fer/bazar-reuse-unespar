@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bazar ReUse - UNESPAR</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+	<section id="telaLogin" class="login-container">
+	    <h1>Bazar ReUse</h1>
+	    <p>UNESPAR - Acesso ao sistema</p>
+
+	    <h2>Entrar</h2>
+
+	    <form id="formLogin">
+	        <label for="emailLogin">E-mail:</label>
+	        <input
+	            type="email"
+	            id="emailLogin"
+	            required
+	            autocomplete="username"
+	            placeholder="Digite seu e-mail"
+	        >
+
+	        <label for="senhaLogin">Senha:</label>
+	        <input
+	            type="password"
+	            id="senhaLogin"
+	            required
+	            autocomplete="current-password"
+	            placeholder="Digite sua senha"
+	        >
+
+	        <button type="submit" class="finalizar">
+	            Entrar no sistema
+	        </button>
+	    </form>
+
+	    <p id="erroLogin" role="alert"></p>
+	</section>
+
+	
+	<main class="container" id="sistema" style="display: none;">
+
+        <header>
+			<nav class="menu">
+			    <a href="index.html">Vendas</a>
+			    <a href="entrada.html">Entrada</a>
+			    <a href="caixa.html">Caixa</a>
+			    <a href="resumo.html">Resumo</a>
+			</nav>
+            <h1>Bazar ReUse</h1>
+            <p>UNESPAR - Controle de Vendas</p>
+			<button type="button" class="sair" onclick="sair()">
+			    Sair do sistema
+			</button>
+			
+        </header>
+
+        <section>
+            <h2>Nova venda</h2>
+            <p>Selecione as peças que o cliente está levando:</p>
+
+            <div class="produtos">
+                <button type="button" onclick="adicionarPeca(5)">
+                    + Peça R$ 5,00
+                </button>
+
+                <button type="button" onclick="adicionarPeca(10)">
+                    + Peça R$ 10,00
+                </button>
+            </div>
+        </section>
+
+        <section class="carrinho">
+            <h2>Carrinho</h2>
+
+            <div class="item">
+                <span>Peças de R$ 5,00</span>
+
+                <div class="quantidade">
+                    <button type="button" onclick="removerPeca(5)">−</button>
+                    <span id="qtd5">0</span>
+                    <button type="button" onclick="adicionarPeca(5)">+</button>
+                </div>
+            </div>
+
+            <div class="item">
+                <span>Peças de R$ 10,00</span>
+
+                <div class="quantidade">
+                    <button type="button" onclick="removerPeca(10)">−</button>
+                    <span id="qtd10">0</span>
+                    <button type="button" onclick="adicionarPeca(10)">+</button>
+                </div>
+            </div>
+
+            <div class="linha">
+                <span>Total de peças:</span>
+                <strong id="totalPecas">0</strong>
+            </div>
+
+            <div class="linha">
+                <span>Subtotal:</span>
+                <strong>R$ <span id="subtotal">0,00</span></strong>
+            </div>
+        </section>
+
+        <section>
+            <h2>Vouchers</h2>
+
+            <label for="quantidadeVouchers">
+                Quantos vouchers o cliente vai utilizar?
+            </label>
+
+            <input
+                type="number"
+                id="quantidadeVouchers"
+                min="0"
+                step="1"
+                value="0"
+                oninput="atualizarCarrinho()"
+            >
+
+            <p class="observacao">
+                Cada voucher dá direito a uma peça.
+            </p>
+        </section>
+
+        <section class="resumo">
+            <div class="linha">
+                <span>Subtotal:</span>
+                <span>R$ <span id="total">0,00</span></span>
+            </div>
+
+            <div class="linha">
+                <span>Desconto dos vouchers:</span>
+                <span>− R$ <span id="desconto">0,00</span></span>
+            </div>
+
+            <div class="total-final">
+                <span>Total a pagar</span>
+                <strong>R$ <span id="totalPagar">0,00</span></strong>
+            </div>
+        </section>
+
+		<section>
+		    <h2>Pagamento</h2>
+
+		    <div id="areaPagamento">
+		        <label for="pagamento">
+		            Forma de pagamento do restante:
+		        </label>
+
+		        <select id="pagamento">
+		            <option value="Pix">Pix</option>
+		            <option value="Dinheiro">Dinheiro</option>
+		        </select>
+		    </div>
+
+		    <div id="mensagemVoucher" class="aviso-voucher"
+		         style="display: none;">
+		        Pagamento integral com vouchers.
+		        Nenhum valor adicional a pagar!
+		    </div>
+
+		    <button
+		        type="button"
+		        class="finalizar"
+		        onclick="finalizarVenda()">
+		        Finalizar venda
+		    </button>
+
+		    <button
+		        type="button"
+		        class="limpar"
+		        onclick="limparCarrinho()">
+		        Limpar carrinho
+		    </button>
+
+		    <p id="mensagem"></p>
+		</section>
+
+        <footer>
+            <p>Bazar ReUse - UNESPAR</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+	<script src="conexao.js"></script>
+	<script src="login.js"></script>
+	<script src="script.js"></script>
+	
+</body>
+</html>
